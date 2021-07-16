@@ -1,0 +1,29 @@
+[
+  {
+    "country": "China",
+    "cumulative_count": 10,
+    "year_week": "2021-25"
+
+  },
+  {
+    "country": "China",
+    "cumulative_count": 103866,
+    "year_week": "2021-26"
+
+  },
+  {
+    "country": "India",
+    "cumulative_count": 30585229,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "United Kingdom",
+    "cumulative_count": 4930533,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "United States of America",
+    "cumulative_count": 33717574,
+    "year_week": "2021-26"
+  }
+]

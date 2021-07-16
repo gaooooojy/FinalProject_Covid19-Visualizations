@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>基于GeoJSON绘制中国地图</title>
+    <style>
+        .province {
+            stroke: black;
+            stroke-width: 1px;
+        }
+        .southchinasea {
+            stroke: black;
+            stroke-width: 1px;
+            fill: red;
+        }
+    </style>
+</head>
+<body>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+    var  width=(window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth)*0.98;
+    //只要“||”前面为false,不管“||”后面是true还是false，都返回“||”后面的值。只要“||”前面为true,不管“||”后面是true还是false，都返回“||”前面的值。
+    var  height=(window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight)*0.98;
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    //定义地图的投影
+    var projection = d3.geo.mercator()
+        .center([107, 31])//指定地图中心经纬度
+        .scale(550)//比例尺
+        .translate([width/2, height/2]);//平移坐标原点到SVG绘图区宽高一半的位置
+
+    //定义地形路径生成器
+    var path = d3.geo.path()
+        .projection(projection);  //设定投影
+
+    //颜色比例尺
+    var color = d3.scale.category20b();
+
+    //请求china.geojson
+    d3.json("map.json", function(error, root) {
+        if (error)
+            return console.error(error);
+        console.log(root);
+
+        var groups = svg.append("g");
+
+        groups.selectAll("path")
+            .data(root.features)//添加数据
+            .enter()
+            .append("path")
+            .attr("class","province")//引用之前定义的类吧
+            .style("fill", function(d,i){//填充颜色，这里可以加一个人数-颜色比例尺
+                return color(i);
+            })
+            .attr("d", path ); //使用路径生成器
+    });
+
+</script>
+</body>
+</html>

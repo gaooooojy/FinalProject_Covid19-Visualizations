@@ -1,0 +1,58 @@
+[
+  {
+    "year_week": "2020-01",
+    "cases": 44
+  },
+  {
+    "year_week": "2020-02",
+    "cases": 92
+  },
+  {
+    "year_week": "2020-03",
+    "cases": 1924
+  },
+  {
+    "year_week": "2020-04",
+    "cases": 12556
+  },
+  {
+    "year_week": "2020-05",
+    "cases": 23020
+  },
+  {
+    "year_week": "2020-06",
+    "cases": 31729
+  },
+  {
+    "year_week": "2020-07",
+    "cases": 9583
+  },
+  {
+    "year_week": "2020-08",
+    "cases": 8263
+  },
+  {
+    "year_week": "2020-09",
+    "cases": 20401
+  },
+  {
+    "year_week": "2020-10",
+    "cases": 54624
+  },
+  {
+    "year_week": "2020-11",
+    "cases": 159632
+  },
+  {
+    "year_week": "2020-12",
+    "cases": 354664
+  },
+  {
+    "year_week": "2020-13",
+    "cases": 497606
+  },
+  {
+    "year_week": "2020-14",
+    "cases": 552599
+  }
+]
