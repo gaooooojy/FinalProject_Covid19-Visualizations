@@ -162,7 +162,6 @@ button{
 }
 .GlobalSituationsCharts{
     flex-direction: column;
-    max-height: 375px;
     display: flex;
     flex: 1 1 auto;
     -webkit-box-pack: initial;
@@ -193,19 +192,19 @@ button{
     font-size: 16px;
     text-transform: lowercase;
 }
-.GlobalSituationsChartsBar{
-    min-height: 0px;
-    min-width: 0px;
-    display: flex;
-    flex-direction: row;
-    flex: 1 1 auto;
-    -webkit-box-pack: initial;
-    justify-content: initial;
-    -webkit-box-align: initial;
-    align-items: initial;
-    max-width: 100%;
-    position: relative;
-    cursor: pointer;
-    margin-top: 20px;
-}
+/*.GlobalSituationsChartsBar{*/
+/*    min-height: 0px;*/
+/*    min-width: 0px;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    flex: 1 1 auto;*/
+/*    -webkit-box-pack: initial;*/
+/*    justify-content: initial;*/
+/*    -webkit-box-align: initial;*/
+/*    align-items: initial;*/
+/*    max-width: 100%;*/
+/*    position: relative;*/
+/*    cursor: pointer;*/
+/*    margin-top: 20px;*/
+/*}*/
 
