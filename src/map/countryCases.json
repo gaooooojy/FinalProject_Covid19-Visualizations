@@ -1,0 +1,49 @@
+[
+  {
+    "country": "China",
+    "cumulative_count": 10,
+    "year_week": "2021-25"
+
+  },
+  {
+    "country": "China",
+    "cumulative_count": 103866,
+    "year_week": "2021-26"
+
+  },
+  {
+    "country": "India",
+    "cumulative_count": 30585229,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "United Kingdom",
+    "cumulative_count": 4930533,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "United States of America",
+    "cumulative_count": 33717574,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "Russia",
+    "cumulative_count": 6030240,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "Canada",
+    "cumulative_count": 1423889,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "Australia",
+    "cumulative_count": 32129,
+    "year_week": "2021-26"
+  },
+  {
+    "country": "Finland",
+    "cumulative_count": 100773,
+    "year_week": "2021-26"
+  }
+]

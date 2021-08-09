@@ -1,0 +1,114 @@
+.App-logo {
+    animation: App-logo-spin infinite 10s linear;
+    height: 60px;
+}
+
+@keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+
+.logo {
+    height: 32px;
+    background: #333;
+    border-radius: 6px;
+    margin: 16px;
+}
+
+.ant-avatar{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.ant-avatar.ant-avatar-circle{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ant-avatar-string{
+    font-size: 16px;
+}
+
+.ant-layout-header{
+    height: 80px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+
+.ant-layout-sider.ant-layout-sider-dark{
+    background-color: white;
+}
+
+.ant-layout-sider-collapsed .anticon {
+    font-size: 16px;
+}
+
+.ant-layout-sider-collapsed .nav-text {
+    display: none;
+}
+
+.site-layout-background{
+    display: flex;
+}
+.anticon.anticon-menu-fold.trigger{
+    display: flex;
+    align-items: center;
+}
+.anticon.anticon-menu-unfold.trigger{
+    display: flex;
+    align-items: center;
+}
+.ant-typography{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.ant-menu-title-content{
+    font-weight: 500;
+}
+
+.ant-menu-submenu-selected{
+    color: #586CB1;
+}
+
+.ant-menu-menu-selected{
+    color: #586CB1;
+}
+
+.ant-menu-submenu-active{
+    color: #586CB1;
+}
+
+.ant-menu-item-selected a, .ant-menu-item-selected a:hover{
+    color: #586CB1;
+}
+
+.ant-menu-item a:hover{
+    color: #586CB1;
+}
+
+.ant-menu-item:active, .ant-menu-submenu-title:active{
+    background: transparent;
+}
+
+.ant-menu-item.ant-menu-item-selected.ant-menu-item-only-child{
+    color: #586CB1;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: #DEE2EF;
+
+}
+
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
+    border-right: 3px solid #586CB1;
+}
+
+.ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
+    color: #586CB1;
+}
+
+.ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-expand-icon, .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow{
+    color: #586CB1;
+}
