@@ -8,8 +8,6 @@
     to { transform: rotate(360deg); }
 }
 
-
-
 .logo {
     height: 32px;
     background: #333;
@@ -48,6 +46,10 @@
     display: none;
 }
 
+.ant-layout.site-layout{
+
+}
+
 .site-layout-background{
     display: flex;
 }
@@ -64,8 +66,13 @@
     margin-top: 10px;
 }
 
+.ant-menu-item.ant-menu-item-selected{
+    color: #586CB1;
+}
+
 .ant-menu-title-content{
     font-weight: 500;
+
 }
 
 .ant-menu-submenu-selected{

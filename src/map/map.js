@@ -11,7 +11,7 @@ function Map() {
 
     return (
         <section id="map">
-            <p style={{paddingBottom:"20px", textAlign:"center", fontWeight:"550", fontSize: "20px"}}>
+            <p style={{paddingBottom:"20px", textAlign:"center", fontWeight:"550", fontSize: "20px", fontFamily: "sans-serif"}}>
                 World Map Data of Coronavirus (COVID-19) (Confirmed Cases)</p>
             <div ref={ref}>            </div>
         </section>
@@ -111,6 +111,7 @@ class WorldCovid {
         this.path = d3.geoPath().projection(projection);
         this.map = this.svg.append("g");
         this.drawMap();
+        this.add_legend();
     }
 
     // 画地图
@@ -123,12 +124,15 @@ class WorldCovid {
                 d.properties.name === "Bermuda" ? "M 0,0" : this.path(d)
             );
 
-        const color = d3
-            .scaleSqrt()
-            .domain([0, d3.max(this.totalCovid_cases, (d) => +d.cumulative_count)])
-            .range(["#95dcf4", "#007092"]);
+        let max = d3.max(this.totalCovid_cases, (d) => +d.cumulative_count)
+        this.color = d3
+            .scaleThreshold(d3.schemeYlGnBu[9]) //这个是颜色
+            // .domain(d3.range(100000, max, max/9))
+        .domain([0, 5000, 50000, 500000, 5000000, max])//---116行代码换成这个也可以,更加灵活
+
+
         mapPath
-            .attr("fill", (d) => color(d.cumulative_count ?? 0))
+            .attr("fill", (d) => this.color(d.cumulative_count ?? 0))
             .attr("stroke", "gray")
             .attr("class", (d) => d.properties.name)
             .on("mouseenter", (e, d) => {
@@ -155,6 +159,22 @@ class WorldCovid {
     }
     tips_hide() {
         d3.select(".d3-tip").style("display", "none");
+    }
+
+    add_legend() {
+        let legend = this.map.append('g').attr('transform', `translate(${this.width - 100},0)`)
+        let r = d3.range(0, 6, 1)
+        let rects = legend.selectAll('rect').data(r).join('rect')
+        rects.attr('y', (d, i) => 20 + i * 30)
+            .attr('width', 30)
+            .attr('height', 30)
+            .attr('fill', (d, i) => this.color.range()[i])
+
+        let texts = legend.selectAll('.mytext').data(r).join('text').attr('class', 'mytext')
+        texts.attr('y', (d, i) => 20 + i * 30 + 20)
+            .attr('x', 35)
+            .text((d, i) => d3.format(".1s")(this.color.domain()[i]))
+
     }
 }
 

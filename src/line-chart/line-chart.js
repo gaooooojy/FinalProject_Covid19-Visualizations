@@ -1,18 +1,19 @@
 import React, { useRef, useEffect } from 'react'
 import * as d3 from 'd3'
 import './line-chart.css'
+
 function LineChart() {
 
     const ref = useRef(null)
     useEffect(() => {
-        new CovidLine(ref.current, "Cumulative Cases")
+        new CovidLine(ref.current)
     }, [])
 
     return (
         <section id="linecharts">
             <p style={{paddingBottom:"20px", textAlign:"center", fontWeight:"550", fontSize: "20px"}}>
                 A Line Chart</p>
-            <div ref={ref}>            </div>
+            <div ref={ref}></div>
         </section>
     )
 }
@@ -22,9 +23,7 @@ class CovidLine {
         this.div = div;
         this.title = title
         this.add_tip();
-
         this.handleData();
-
     }
     // add_title() {
     //     // title_text

@@ -4,16 +4,22 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
-    AppstoreOutlined,
     SettingOutlined,
     GlobalOutlined
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './Navi.css';
-import BarChart from './bar-chart/bar-chart';
+import GlobalWeekly from "./global-weekly/global-weekly";
 import Map from './map/map'
 import MapDeaths from './map-deaths/map-deaths'
-import LineChart from "./line-chart/line-chart";
+import LineChartContinent from "./line-chart-continent/line-chart-continent";
+import LineChartContinentDeaths from "./line-chart-continent-deaths/line-chart-continent-deaths";
+import LineChartCountries from "./line-chart-countries/line-chart-countries";
+import LineChartCountriesDeaths from "./line-chart-countries-deaths/line-chart-countries-deaths";
+import StuckColumnChart from './stuck-column-chart/stuck-column-chart';
+import StuckColumnChartDeaths from "./stuck-column-chart-deaths/stuck-column-chart-deaths";
+import StuckColumnChartCountries from "./stuck-column-chart-countries/stuck-column-chart-countries";
+import StuckColumnChartCountriesDeaths from "./stuck-column-chart-countries-deaths/stuck-column-chart-countries-deaths";
 
 const { Title } = Typography;
 const { Header, Content, Sider } = Layout;
@@ -53,7 +59,10 @@ class SiderDemo extends Component {
         return (
             <Router>
             <Layout>
-                <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+                <Sider
+
+
+                    trigger={null} collapsible collapsed={this.state.collapsed}>
                     <div style={{display:'flex', justifyContent: 'center', height:'80px'}}>
                     <Avatar
                         size={40}
@@ -71,33 +80,52 @@ class SiderDemo extends Component {
                         defaultOpenKeys={['sub1']}
                         mode="inline"
                     >
+                        <Menu.Item icon={<GlobalOutlined />} >My Portal
+
+                        </Menu.Item>
+
 
                         <SubMenu key="sub1" icon={<GlobalOutlined />} title="World Map">
                             <Menu.Item key="1"><Link to="/map">Confirmed Situation</Link></Menu.Item>
                             <Menu.Item key="2"><Link to="/mapdeaths">Deaths Situation</Link></Menu.Item>
                         </SubMenu>
 
+                        <SubMenu key="sub3" icon={<GlobalOutlined />} title="Global Situation">
+                            <Menu.Item key="7"><Link to="/globalweekly">Weekly</Link></Menu.Item>
+                            {/*<Menu.Item key="8"><Link to="/barchartsdeaths">Deaths</Link></Menu.Item>*/}
+                        </SubMenu>
 
+                        <SubMenu key="sub5" icon={<SettingOutlined />} title="Stuck Column Charts">
+                            <SubMenu  title="Continents">
+                                <Menu.Item key="11"><Link to="/stuckcolumnchart">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="12"><Link to="/stuckcolumnchartdeaths">Deaths</Link></Menu.Item>
+                            </SubMenu>
 
-                        <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Bar Charts">
-                            <Menu.Item key="5"><Link to="/linecharts">Line Charts</Link></Menu.Item>
-                            <Menu.Item key="6"><Link to="/barcharts">Bar Charts</Link></Menu.Item>
-                            <SubMenu key="sub3" title="Submenu">
-                                <Menu.Item key="7">Option 7</Menu.Item>
-                                <Menu.Item key="8">Option 8</Menu.Item>
+                            <SubMenu title="Main Countries">
+                                <Menu.Item key="13"><Link to="/stuckcolumnchartcountries">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="14"><Link to="/stuckcolumnchartcountriesdeaths">Deaths</Link></Menu.Item>
+
+                            </SubMenu>
+
+                        </SubMenu>
+
+                        <SubMenu key="sub4" icon={<SettingOutlined />} title="Basic Charts">
+                            <SubMenu title="Continents">
+                                <Menu.Item key="9"><Link to="/linechartscontinent">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="10"><Link to="/linechartscontinentdeaths">Deaths</Link></Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu title="Main Countries">
+                                <Menu.Item key="15"><Link to="/linechartscontries">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="16"><Link to="/linechartscontriesdeaths">Deaths</Link></Menu.Item>
+
                             </SubMenu>
                         </SubMenu>
-                        <SubMenu key="sub4" icon={<SettingOutlined />} title="Line Charts">
-                            <Menu.Item key="9">Option 9</Menu.Item>
-                            <Menu.Item key="10">Option 10</Menu.Item>
-                            <Menu.Item key="11">Option 11</Menu.Item>
-                            <Menu.Item key="12">Option 12</Menu.Item>
-                        </SubMenu>
+
                     </Menu>
 
-
                 </Sider>
-                <Layout className="site-layout">
+                <Layout className="site-layout" >
                     <Header className="site-layout-background" style={{ padding: 10 }}>
                         {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                             className: 'trigger',
@@ -119,8 +147,16 @@ class SiderDemo extends Component {
                     >
                         <Route exact path="/map" component={Map} />
                         <Route exact path="/mapdeaths" component={MapDeaths} />
-                        <Route exact path="/linecharts" component={LineChart} />
-                        <Route exact path="/barcharts" component={BarChart} />
+                        <Route exact path="/linechartscontinent" component={LineChartContinent} />
+                        <Route exact path="/linechartscontinentdeaths" component={LineChartContinentDeaths} />
+                        <Route exact path="/linechartscontries" component={LineChartCountries} />
+                        <Route exact path="/linechartscontriesdeaths" component={LineChartCountriesDeaths} />
+                        <Route exact path="/globalweekly" component={GlobalWeekly} />
+                        {/*<Route exact path="/barchartsdeaths" component={BarChartDeaths} />*/}
+                        <Route exact path="/stuckcolumnchart" component={StuckColumnChart} />
+                        <Route exact path="/stuckcolumnchartdeaths" component={StuckColumnChartDeaths} />
+                        <Route exact path="/stuckcolumnchartcountries" component={StuckColumnChartCountries} />
+                        <Route exact path="/stuckcolumnchartcountriesdeaths" component={StuckColumnChartCountriesDeaths} />
                     </Content>
                 </Layout>
             </Layout>
