@@ -23,6 +23,8 @@
 .ant-avatar.ant-avatar-circle{
     margin-left: 10px;
     margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .ant-avatar-string{
@@ -46,9 +48,6 @@
     display: none;
 }
 
-.ant-layout.site-layout{
-
-}
 
 .site-layout-background{
     display: flex;
