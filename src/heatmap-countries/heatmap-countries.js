@@ -4,7 +4,7 @@ import ReactECharts from 'echarts-for-react';
 const HeatmapCountries = () => {
     const option = {
         title: {
-            text: 'Data on 14-day notification rate of new cases in per 100,000 people by Continents',
+            text: 'Data on 14-day notification rate of new cases in per 100,000 people by Main Countries',
             left: 'center'
         },
         toolbox: {

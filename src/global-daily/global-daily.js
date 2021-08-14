@@ -11,7 +11,7 @@ const GlobalDaily = () => {
         },
 
         legend: {
-            data: ['Confirmed Cases', '7-days-average' ],
+            data: ['Confirmed Cases', '7-day-average' ],
             top: '10%'
         },
 

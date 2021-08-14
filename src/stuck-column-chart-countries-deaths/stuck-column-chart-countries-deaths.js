@@ -13,7 +13,7 @@ const StuckColumnChartCountriesDeaths = () => {
 
     const option = {
         title: {
-            text: 'Stuck Colunm Chart of Main Countries (Deaths)',
+            text: 'Stuck Column Chart of Main Countries (Deaths)',
             left: 'center'
         },
 

@@ -1,0 +1,6 @@
+.ant-list-bordered{
+    border: 0px;
+}
+.ant-list-item.ant-list-item-no-flex{
+    display: flex;
+}

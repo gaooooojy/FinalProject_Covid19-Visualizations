@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
     MenuUnfoldOutlined, MenuFoldOutlined, SettingOutlined, GlobalOutlined, UserOutlined, CalendarOutlined,
-    CarryOutOutlined, EyeOutlined, ShopOutlined, AreaChartOutlined, BarChartOutlined, HeatMapOutlined,
+    CarryOutOutlined, EyeOutlined, ShopOutlined, AreaChartOutlined, LineChartOutlined, HeatMapOutlined,
     AppstoreOutlined
 
 } from '@ant-design/icons';
@@ -118,7 +118,7 @@ class SiderDemo extends Component {
                                 <Menu.Item key="12"><Link to="/stuckcolumnchartdeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
 
-                            <SubMenu icon={<BarChartOutlined />} title="Basic Chart">
+                            <SubMenu icon={<LineChartOutlined />} title="Basic Chart">
                                 <Menu.Item key="9"><Link to="/linechartscontinent">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="10"><Link to="/linechartscontinentdeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
@@ -137,7 +137,7 @@ class SiderDemo extends Component {
                                 <Menu.Item key="14"><Link to="/stuckcolumnchartcountriesdeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
 
-                            <SubMenu icon={<BarChartOutlined />} title="Basic Chart">
+                            <SubMenu icon={<LineChartOutlined />} title="Basic Chart">
                                 <Menu.Item key="15"><Link to="/linechartscontries">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="16"><Link to="/linechartscontriesdeaths">Deaths</Link></Menu.Item>
                                 <Menu.Item key="17"><Link to="/Brazil">Brazil</Link></Menu.Item>

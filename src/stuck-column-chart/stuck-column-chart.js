@@ -13,7 +13,7 @@ const StuckColumnChart = () => {
 
     const option = {
         title: {
-            text: 'Stuck Colunm Chart of Continents (Confirmed Cases)',
+            text: 'Stuck Column Chart of Continents (Confirmed Cases)',
             left: 'center'
         },
 
