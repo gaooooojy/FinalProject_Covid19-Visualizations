@@ -2,13 +2,14 @@ import { Layout, Menu, Typography, Avatar } from 'antd';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    SettingOutlined,
-    GlobalOutlined
+    MenuUnfoldOutlined, MenuFoldOutlined, SettingOutlined, GlobalOutlined, UserOutlined, CalendarOutlined,
+    CarryOutOutlined, EyeOutlined, ShopOutlined, AreaChartOutlined, BarChartOutlined, HeatMapOutlined,
+    AppstoreOutlined
+
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './Navi.css';
+import Dashboard from "./dashboard/dashboard";
 import GlobalWeekly from "./global-weekly/global-weekly";
 import GlobalDaily from "./global-daily/global-daily";
 import GlobalDailyDeaths from "./global-daily-deaths/global-daily-deaths";
@@ -30,12 +31,14 @@ import Russia from "./country-Russia/country-Russia";
 import UnitedKingdom from "./country-UK/country-UK";
 import UnitedStatesOfAmerica from "./country-USA/country-USA";
 // import PieLineChart from "./pie-line-chart/pie-line-chart";
+import Heatmap from "./heatmap/heatmap";
+import HeatmapDeaths from "./heatmap-deaths/heatmap-deaths";
+import HeatmapCountries from "./heatmap-countries/heatmap-countries";
+import HeatmapCountriesDeaths from "./heatmap-countries-deaths/heatmap-countries-deaths";
 
 const { Title } = Typography;
 const { Header, Content, Sider } = Layout;
-
 const { SubMenu } = Menu;
-
 
 class SiderDemo extends Component {
     state = {
@@ -61,17 +64,16 @@ class SiderDemo extends Component {
     };
 
     render() {
-        let UserName={
-            color:'black', display: 'flex', alignItems: 'center',
-            marginLeft:'10px', marginRight:'10px'
-        }
-
         return (
             <Router>
             <Layout>
                 <Sider
-
-
+                    style={{
+                        overflow: 'auto',
+                        height: '100vh',
+                        position: 'fixed',
+                        left: 0,
+                    }}
                     trigger={null} collapsible collapsed={this.state.collapsed}>
                     <div style={{display:'flex', justifyContent: 'center', height:'120px'}}>
                     {/*<Avatar*/}
@@ -81,7 +83,6 @@ class SiderDemo extends Component {
 
                     {/*<text*/}
                     {/*    style={this.state.collapsed ? this.state.UserName: UserName}>Jingyi Gao</text>*/}
-
                     </div>
 
                     <Menu
@@ -90,7 +91,11 @@ class SiderDemo extends Component {
                         defaultOpenKeys={['sub1']}
                         mode="inline"
                     >
-                        <Menu.Item icon={<GlobalOutlined />} >My Portal
+                        <Menu.Item icon={<UserOutlined />} >My Portal
+
+                        </Menu.Item>
+
+                        <Menu.Item icon={<AppstoreOutlined />} ><Link to="/dashboard">Dashboard</Link>
 
                         </Menu.Item>
 
@@ -99,35 +104,40 @@ class SiderDemo extends Component {
                             <Menu.Item key="2"><Link to="/mapdeaths">Deaths Situation</Link></Menu.Item>
                         </SubMenu>
 
-                        <SubMenu key="sub3" icon={<GlobalOutlined />} title="Global Situation">
-                            <Menu.Item key="7"><Link to="/globalweekly">Weekly</Link></Menu.Item>
-                            <SubMenu title="Daily">
+                        <SubMenu key="sub3" icon={<EyeOutlined />} title="Global Situation">
+                            <Menu.Item key="7" icon={<CalendarOutlined />} ><Link to="/globalweekly">Weekly</Link></Menu.Item>
+                            <SubMenu title="Daily" icon={<CarryOutOutlined />} >
                                 <Menu.Item key="8"><Link to="/globaldaily">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="24"><Link to="/globaldailydeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
                         </SubMenu>
 
-                        <SubMenu key="sub5" icon={<SettingOutlined />} title="Continents">
-                            <SubMenu  title="Stuck Column Chart">
+                        <SubMenu key="sub5" icon={<ShopOutlined />} title="Continents">
+                            <SubMenu icon={<AreaChartOutlined />} title="Stuck Column Chart">
                                 <Menu.Item key="11"><Link to="/stuckcolumnchart">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="12"><Link to="/stuckcolumnchartdeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
 
-                            <SubMenu title="Basic Chart">
+                            <SubMenu icon={<BarChartOutlined />} title="Basic Chart">
                                 <Menu.Item key="9"><Link to="/linechartscontinent">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="10"><Link to="/linechartscontinentdeaths">Deaths</Link></Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu icon={<HeatMapOutlined />} title="Heatmap">
+                                <Menu.Item key="25"><Link to="/heatmap">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="26"><Link to="/heatmapdeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
 
                         </SubMenu>
 
                         <SubMenu key="sub4" icon={<SettingOutlined />} title="Main Countries">
 
-                            <SubMenu title="Stuck Column Chart">
+                            <SubMenu icon={<AreaChartOutlined />} title="Stuck Column Chart">
                                 <Menu.Item key="13"><Link to="/stuckcolumnchartcountries">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="14"><Link to="/stuckcolumnchartcountriesdeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
 
-                            <SubMenu title="Basic Chart">
+                            <SubMenu icon={<BarChartOutlined />} title="Basic Chart">
                                 <Menu.Item key="15"><Link to="/linechartscontries">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="16"><Link to="/linechartscontriesdeaths">Deaths</Link></Menu.Item>
                                 <Menu.Item key="17"><Link to="/Brazil">Brazil</Link></Menu.Item>
@@ -135,10 +145,16 @@ class SiderDemo extends Component {
                                 <Menu.Item key="19"><Link to="/France">France</Link></Menu.Item>
                                 <Menu.Item key="20"><Link to="/India">India</Link></Menu.Item>
                                 <Menu.Item key="21"><Link to="/Russia">Russia</Link></Menu.Item>
-                                <Menu.Item key="22"><Link to="/UnitedKingdom">UnitedKingdom</Link></Menu.Item>
-                                <Menu.Item key="23"><Link to="/UnitedStatesOfAmerica">UnitedStatesOfAmerica</Link></Menu.Item>
+                                <Menu.Item key="22"><Link to="/UnitedKingdom">UK</Link></Menu.Item>
+                                <Menu.Item key="23"><Link to="/UnitedStatesOfAmerica">USA</Link></Menu.Item>
 
                             </SubMenu>
+
+                            <SubMenu icon={<HeatMapOutlined />} title="Heatmap">
+                                <Menu.Item key="27"><Link to="/heatmapcountries">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="28"><Link to="/heatmapcountriesdeaths">Deaths</Link></Menu.Item>
+                            </SubMenu>
+
                         </SubMenu>
 
                         <Menu.Item icon={<GlobalOutlined />} ><Link to="/pielinechart">Pie-Line Chart</Link>
@@ -148,7 +164,7 @@ class SiderDemo extends Component {
                     </Menu>
 
                 </Sider>
-                <Layout className="site-layout" >
+                <Layout className="site-layout"  style={{ marginLeft: 200 }}>
                     <Header className="site-layout-background" style={{ padding: 10 }}>
                         {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                             className: 'trigger',
@@ -168,6 +184,7 @@ class SiderDemo extends Component {
                             width: "100%"
                         }}
                     >
+                        <Route exact path="/dashboard" component={Dashboard} />
                         <Route exact path="/map" component={Map} />
                         <Route exact path="/mapdeaths" component={MapDeaths} />
                         <Route exact path="/linechartscontinent" component={LineChartContinent} />
@@ -190,6 +207,10 @@ class SiderDemo extends Component {
                         <Route exact path="/stuckcolumnchartcountries" component={StuckColumnChartCountries} />
                         <Route exact path="/stuckcolumnchartcountriesdeaths" component={StuckColumnChartCountriesDeaths} />
                         {/*<Route exact path="/pielinechart" component={PieLineChart} />*/}
+                        <Route exact path="/heatmap" component={Heatmap} />
+                        <Route exact path="/heatmapdeaths" component={HeatmapDeaths} />
+                        <Route exact path="/heatmapcountries" component={HeatmapCountries} />
+                        <Route exact path="/heatmapcountriesdeaths" component={HeatmapCountriesDeaths} />
                     </Content>
                 </Layout>
             </Layout>
