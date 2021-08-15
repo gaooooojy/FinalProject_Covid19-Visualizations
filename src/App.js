@@ -1,3 +1,5 @@
+import React from 'react';
+
 import './App.css';
 import "antd/dist/antd.css";
 import {
@@ -5,14 +7,16 @@ import {
     Switch,
     Route
 } from "react-router-dom";
+import Map from './Components/map/map'
+import Line from './Components/line-chart/line-chart'
+import MyMenu from './Components/Navi'
 
-import Map from './map/map'
-import Line from './line-chart/line-chart'
-import MyMenu from './Navi';
 function App() {
+
     return (
         <div className="App">
             <Router>
+
                 <MyMenu />
 
                 <Switch>
