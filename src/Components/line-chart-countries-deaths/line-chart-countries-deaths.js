@@ -13,17 +13,17 @@ const LineChartCountriesDeaths = () => {
 
     const option = {
         title: {
-            text: 'Line Chart of Main Countries (Deaths)',
+            text: 'A Basic Chart of Main Countries (Deaths)',
             left: 'center'
         },
 
         toolbox: {
             feature: {
-                saveAsImage: {},
                 magicType: {
-                    type: ["line", "bar"]
+                    type: ["line", "bar","stack"]
                 },
                 restore: {},
+                saveAsImage: {},
             },
             right: '5%'
         },

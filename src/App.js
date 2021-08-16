@@ -8,7 +8,6 @@ import {
     Route
 } from "react-router-dom";
 import Map from './Components/map/map'
-import Line from './Components/line-chart/line-chart'
 import MyMenu from './Components/Navi'
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
                         <Map />
                     </Route>
                     <Route path="/linecharts">
-                        <Line />
+
                     </Route>
 
                 </Switch>

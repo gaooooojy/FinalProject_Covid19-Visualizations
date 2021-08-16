@@ -605,6 +605,6 @@ const HeatmapCountries = () => {
         ]
     }
 
-    return <ReactECharts option={option} style={{ height: 600 , width: "1000px"}}/>;
+    return <ReactECharts option={option} style={{ height: 600 , width: "1010px", marginLeft:"10px"}}/>;
 };
 export default HeatmapCountries;

@@ -2,27 +2,28 @@ import { Layout, Menu, Typography, Avatar } from 'antd';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
-    MenuUnfoldOutlined, MenuFoldOutlined, SettingOutlined, GlobalOutlined, UserOutlined, CalendarOutlined,
+    MenuUnfoldOutlined, MenuFoldOutlined, HomeOutlined, GlobalOutlined, UserOutlined, CalendarOutlined,
     CarryOutOutlined, EyeOutlined, ShopOutlined, AreaChartOutlined, LineChartOutlined, HeatMapOutlined,
-    AppstoreOutlined
+    AppstoreOutlined, PieChartOutlined
 
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './Navi.css';
+import MyPortal from "./myportal/myportal";
 import Dashboard from "./dashboard/dashboard";
 import GlobalWeekly from "./global-weekly/global-weekly";
 import GlobalDaily from "./global-daily/global-daily";
 import GlobalDailyDeaths from "./global-daily-deaths/global-daily-deaths";
 import Map from './map/map'
 import MapDeaths from './map-deaths/map-deaths'
-import StuckColumnChart from './stuck-column-chart/stuck-column-chart';
-import StuckColumnChartDeaths from "./stuck-column-chart-deaths/stuck-column-chart-deaths";
-import StuckColumnChartCountries from "./stuck-column-chart-countries/stuck-column-chart-countries";
-import StuckColumnChartCountriesDeaths from "./stuck-column-chart-countries-deaths/stuck-column-chart-countries-deaths";
 import LineChartContinent from "./line-chart-continent/line-chart-continent";
 import LineChartContinentDeaths from "./line-chart-continent-deaths/line-chart-continent-deaths";
 import LineChartCountries from "./line-chart-countries/line-chart-countries";
 import LineChartCountriesDeaths from "./line-chart-countries-deaths/line-chart-countries-deaths";
+import CumulativeContinents from "./cumulative-continents/cumulative-continents";
+import CumulativeContinentsDeaths from "./cumulative-continents-deaths/cumulative-continents-deaths";
+import CumulativeCountries from "./cumulative-countries/cumulative-countries";
+import CumulativeCountriesDeaths from "./cumulative-countries-deaths/cumulative-countries-deaths";
 import Brazil from "./country-Brazil/country-Brazil";
 import China from "./country-China/country-China";
 import France from "./country-France/country-France";
@@ -30,11 +31,12 @@ import India from "./country-India/country-India";
 import Russia from "./country-Russia/country-Russia";
 import UnitedKingdom from "./country-UK/country-UK";
 import UnitedStatesOfAmerica from "./country-USA/country-USA";
-import PieLineChart from "./pie-line-chart/pie-line-chart";
 import Heatmap from "./heatmap/heatmap";
 import HeatmapDeaths from "./heatmap-deaths/heatmap-deaths";
 import HeatmapCountries from "./heatmap-countries/heatmap-countries";
 import HeatmapCountriesDeaths from "./heatmap-countries-deaths/heatmap-countries-deaths";
+import PieLineChart from "./pie-line-chart/pie-line-chart";
+import BarChart from "./bar-chart/bar-chart";
 import LoginInfo from "./Login/LoginInfo";
 
 
@@ -94,7 +96,7 @@ class SiderDemo extends Component {
                         defaultOpenKeys={['sub1']}
                         mode="inline"
                     >
-                        <Menu.Item icon={<UserOutlined />} >My Portal
+                        <Menu.Item icon={<UserOutlined />} ><Link to="/myportal">My Portal</Link>
 
                         </Menu.Item>
 
@@ -116,14 +118,15 @@ class SiderDemo extends Component {
                         </SubMenu>
 
                         <SubMenu key="sub5" icon={<ShopOutlined />} title="Continents">
-                            <SubMenu icon={<AreaChartOutlined />} title="Stuck Column Chart">
-                                <Menu.Item key="11"><Link to="/stuckcolumnchart">Confirmed Cases</Link></Menu.Item>
-                                <Menu.Item key="12"><Link to="/stuckcolumnchartdeaths">Deaths</Link></Menu.Item>
-                            </SubMenu>
 
                             <SubMenu icon={<LineChartOutlined />} title="Basic Chart">
                                 <Menu.Item key="9"><Link to="/linechartscontinent">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="10"><Link to="/linechartscontinentdeaths">Deaths</Link></Menu.Item>
+                            </SubMenu>
+
+                            <SubMenu icon={<AreaChartOutlined />} title="Cumulative">
+                                <Menu.Item key="3"><Link to="/cumulativecontinents">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="4"><Link to="/cumulativecontinentsdeaths">Deaths</Link></Menu.Item>
                             </SubMenu>
 
                             <SubMenu icon={<HeatMapOutlined />} title="Heatmap">
@@ -133,12 +136,8 @@ class SiderDemo extends Component {
 
                         </SubMenu>
 
-                        <SubMenu key="sub4" icon={<SettingOutlined />} title="Main Countries">
+                        <SubMenu key="sub4" icon={<HomeOutlined />} title="Main Countries">
 
-                            <SubMenu icon={<AreaChartOutlined />} title="Stuck Column Chart">
-                                <Menu.Item key="13"><Link to="/stuckcolumnchartcountries">Confirmed Cases</Link></Menu.Item>
-                                <Menu.Item key="14"><Link to="/stuckcolumnchartcountriesdeaths">Deaths</Link></Menu.Item>
-                            </SubMenu>
 
                             <SubMenu icon={<LineChartOutlined />} title="Basic Chart">
                                 <Menu.Item key="15"><Link to="/linechartscontries">Confirmed Cases</Link></Menu.Item>
@@ -153,6 +152,11 @@ class SiderDemo extends Component {
 
                             </SubMenu>
 
+                            <SubMenu icon={<AreaChartOutlined />} title="Cumulative">
+                                <Menu.Item key="5"><Link to="/cumulativecountries">Confirmed Cases</Link></Menu.Item>
+                                <Menu.Item key="6"><Link to="/cumulativecountriesdeaths">Deaths</Link></Menu.Item>
+                            </SubMenu>
+
                             <SubMenu icon={<HeatMapOutlined />} title="Heatmap">
                                 <Menu.Item key="27"><Link to="/heatmapcountries">Confirmed Cases</Link></Menu.Item>
                                 <Menu.Item key="28"><Link to="/heatmapcountriesdeaths">Deaths</Link></Menu.Item>
@@ -160,15 +164,18 @@ class SiderDemo extends Component {
 
                         </SubMenu>
 
-                        <Menu.Item icon={<GlobalOutlined />} ><Link to="/pielinechart">Pie-Line Chart</Link>
+                        <Menu.Item icon={<PieChartOutlined />} ><Link to="/pielinechart">Covid-19 with age</Link>
+                        </Menu.Item>
 
+                        <Menu.Item icon={<PieChartOutlined />} ><Link to="/barchart">Covid-19 with race</Link>
                         </Menu.Item>
 
                     </Menu>
 
                 </Sider>
-                <Layout className="site-layout"  style={{ marginLeft: 200 }}>
-                    <Header className="site-layout-background" style={{ padding: 10 }}>
+                <Layout className="site-layout"  style={{ marginLeft: 200 ,display:"block"}}>
+                    <Header className="site-layout-background" style={{ padding: 10, position:"fixed",zIndex: 1,
+                        overflow: 'auto',right:0,height:'10vh',width:"85%",borderBottom:'1px solid #E6E6E6'}}>
                         {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                             className: 'trigger',
                             onClick: this.toggle,
@@ -181,19 +188,28 @@ class SiderDemo extends Component {
                     <Content
                         className="site-layout-background"
                         style={{
-                            margin: '24px 16px',
+                            marginTop: '80px',
+                            marginLeft:'2px',
                             paddingTop: 24,
                             minHeight: 750,
                             width: "100%"
                         }}
                     >
+                        <Route exact path="/myportal" component={MyPortal} />
                         <Route exact path="/dashboard" component={Dashboard} />
                         <Route exact path="/map" component={Map} />
                         <Route exact path="/mapdeaths" component={MapDeaths} />
+
+                        <Route exact path="/cumulativecontinents" component={CumulativeContinents} />
+                        <Route exact path="/cumulativecontinentsdeaths" component={CumulativeContinentsDeaths} />
+                        <Route exact path="/cumulativecountries" component={CumulativeCountries} />
+                        <Route exact path="/cumulativecountriesdeaths" component={CumulativeCountriesDeaths} />
+
                         <Route exact path="/linechartscontinent" component={LineChartContinent} />
                         <Route exact path="/linechartscontinentdeaths" component={LineChartContinentDeaths} />
                         <Route exact path="/linechartscontries" component={LineChartCountries} />
                         <Route exact path="/linechartscontriesdeaths" component={LineChartCountriesDeaths} />
+
                         <Route exact path="/Brazil" component={Brazil} />
                         <Route exact path="/China" component={China} />
                         <Route exact path="/France" component={France} />
@@ -205,15 +221,14 @@ class SiderDemo extends Component {
                         <Route exact path="/globalweekly" component={GlobalWeekly} />
                         <Route exact path="/globaldaily" component={GlobalDaily} />
                         <Route exact path="/globaldailydeaths" component={GlobalDailyDeaths} />
-                        <Route exact path="/stuckcolumnchart" component={StuckColumnChart} />
-                        <Route exact path="/stuckcolumnchartdeaths" component={StuckColumnChartDeaths} />
-                        <Route exact path="/stuckcolumnchartcountries" component={StuckColumnChartCountries} />
-                        <Route exact path="/stuckcolumnchartcountriesdeaths" component={StuckColumnChartCountriesDeaths} />
-                        <Route exact path="/pielinechart" component={PieLineChart} />
+
                         <Route exact path="/heatmap" component={Heatmap} />
                         <Route exact path="/heatmapdeaths" component={HeatmapDeaths} />
                         <Route exact path="/heatmapcountries" component={HeatmapCountries} />
                         <Route exact path="/heatmapcountriesdeaths" component={HeatmapCountriesDeaths} />
+
+                        <Route exact path="/pielinechart" component={PieLineChart} />
+                        <Route exact path="/barchart" component={BarChart} />
                     </Content>
                 </Layout>
             </Layout>

@@ -13,17 +13,17 @@ const LineChartCountries = () => {
 
     const option = {
         title: {
-            text: 'Line Chart of Main Countries (Confirmed Cases)',
+            text: 'A Basic Chart of Main Countries (Confirmed Cases)',
             left: 'center'
         },
 
         toolbox: {
             feature: {
-                saveAsImage: {},
                 magicType: {
-                    type: ["line", "bar"]
+                    type: ["line", "bar","stack"]
                 },
                 restore: {},
+                saveAsImage: {},
             },
             right: '5%'
         },

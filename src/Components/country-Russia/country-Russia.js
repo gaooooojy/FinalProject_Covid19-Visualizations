@@ -24,9 +24,9 @@ const Russia = () => {
 
         toolbox: {
             feature: {
-                saveAsImage: {},
                 magicType: {show: true, type: ['line', 'bar']},
                 restore: {},
+                saveAsImage: {},
             },
             right: '5%'
         },

@@ -13,17 +13,16 @@ const LineChartContinent = () => {
 
     const option = {
         title: {
-            text: 'Line Chart of Continents (Confirmed Cases)',
+            text: 'A Basic Chart of Continents (Confirmed Cases)',
             left: 'center'
         },
-
         toolbox: {
             feature: {
-                saveAsImage: {},
                 magicType: {
-                    type: ["line", "bar"]
+                    type: ["line", "bar","stack"]
                 },
                 restore: {},
+                saveAsImage: {},
             },
             right: '5%'
         },
